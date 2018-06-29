@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>JamButton.qml</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>background.png</file>
+        <file>jam-splash.png</file>
+    </qresource>
+</RCC>
