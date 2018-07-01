@@ -2,18 +2,37 @@ import QtQuick 2.9
 
 Item {
     id: jamButton
-    property int jamWidth
-    property int jamHeight
+    property int jamWidth: 150
+    property int jamHeight: 70
+    property string jamText
+    property int jamTextSize: 20
     signal clicked
 
     width: jamWidth
     height: jamHeight
 
+    FontLoader{
+        id: androidEmoji
+        name: "AndroidEmoji"
+        source: "qrc:/fonts/AndroidEmoji.ttf"
+    }
+
     Image{
         id: jamButtonImage
         source: "qrc:/images/jam-splash.png"
-        anchors.fill: parent
+        height: jamHeight
+        width: jamWidth
         fillMode: Image.PreserveAspectFit
+        Text {
+            id: jamButtonText
+            text: jamText
+            color: "#fcff00"
+            font.family: androidEmoji.name
+            font.pixelSize: jamTextSize
+            //anchors.centerIn: jamButtonImage
+            anchors.bottom: parent.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
         MouseArea{
             anchors.fill: parent
             onClicked: {

@@ -2,9 +2,16 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>JamButton.qml</file>
+        <file>SignUp.qml</file>
+        <file>Sidebar.qml</file>
     </qresource>
     <qresource prefix="/images">
         <file>background.png</file>
         <file>jam-splash.png</file>
+        <file>wooden-table.png</file>
+        <file>raspberry-jam.png</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>AndroidEmoji.ttf</file>
     </qresource>
 </RCC>
