@@ -16,11 +16,6 @@ Window {
         states:[
             State{
                 name: "MainState"
-                StateChangeScript{
-                    script: {
-                        delayAnimation.start()
-                    }
-                }
 
             },
             State{
@@ -64,21 +59,23 @@ Window {
             anchors.horizontalCenter: background.horizontalCenter
             jamText: "START"
             onClicked: {
-                jamRect.state = "SignUp"
+                delayAnimation.start()
+                signUpScreen.visible = true
             }
         }
     }
 
     SignUp{
         id: signUpScreen
-        visible: jamRect.state == "SignUp"
         anchors.fill: parent
+        visible: false
     }
 
 
 
     PauseAnimation {
         id: delayAnimation
-        duration: 300
+        duration: 1000
+        loops: 1
     }
 }
