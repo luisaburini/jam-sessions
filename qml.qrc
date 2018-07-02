@@ -4,12 +4,20 @@
         <file>JamButton.qml</file>
         <file>SignUp.qml</file>
         <file>Sidebar.qml</file>
+        <file>SpoonButton.qml</file>
+        <file>Login.qml</file>
+        <file>Profile.qml</file>
+        <file>textureandlight.js</file>
+        <file>gl-matrix.js</file>
     </qresource>
     <qresource prefix="/images">
         <file>background.png</file>
         <file>jam-splash.png</file>
         <file>wooden-table.png</file>
         <file>raspberry-jam.png</file>
+        <file>spoon.png</file>
+        <file>jam-lid.png</file>
+        <file>wooden-texture.jpg</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>AndroidEmoji.ttf</file>

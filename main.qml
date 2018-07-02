@@ -16,25 +16,16 @@ Window {
         states:[
             State{
                 name: "MainState"
-
             },
             State{
                 name: "SignUp"
-                StateChangeScript{
-                    script: {
-                        delayAnimation.start()
-                    }
-                }
+            },
+            State{
+                name: "Login"
             },
             State{
                 name: "Profile"
-                StateChangeScript{
-                    script: {
-                        delayAnimation.start()
-                    }
-                }
             }
-
         ]
 
         Image{
@@ -53,14 +44,24 @@ Window {
             anchors.horizontalCenter: jamRect.horizontalCenter
             y: jamRect.height/14
         }
-        JamButton{
-            id: startButton
+        Row{
             anchors.bottom: jamRect.bottom
             anchors.horizontalCenter: background.horizontalCenter
-            jamText: "START"
-            onClicked: {
-                delayAnimation.start()
-                signUpScreen.visible = true
+            spacing: background.width/4
+
+            JamButton{
+                id: signUpButton
+                jamText: "SIGNUP"
+                onClicked: {
+                    jamRect.state = "SignUp"
+                }
+            }
+            JamButton{
+                id: loginButton
+                jamText: "LOGIN"
+                onClicked: {
+                    jamRect.state = "Login"
+                }
             }
         }
     }
@@ -68,14 +69,18 @@ Window {
     SignUp{
         id: signUpScreen
         anchors.fill: parent
-        visible: false
+        visible: (jamRect.state === "SignUp")
+    }
+    Login{
+        id: loginScreen
+        anchors.fill: parent
+        visible: (jamRect.state == "Login")
+    }
+    Profile{
+        id: profileScreen
+        anchors.fill: parent
+        visible: (jamRect.state == "Profile")
     }
 
 
-
-    PauseAnimation {
-        id: delayAnimation
-        duration: 1000
-        loops: 1
-    }
 }

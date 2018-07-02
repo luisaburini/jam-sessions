@@ -37,7 +37,6 @@ Item {
             }
         }
 
-
         Rectangle{
             id: rectBackground
             color: "white"
@@ -45,16 +44,25 @@ Item {
             width: signUpRect.width*0.4
             anchors.centerIn: parent
 
+            ScaleAnimator{
+                id: shrinkRect
+                target: rectBackground
+                from: 1
+                to: 0
+                duration: 400
+            }
+
+
             Text{
                 id: nameText
-                text: "USER NAME"
+                text: "USERNAME"
                 font.family: "Times New Roman"
-                font.pixelSize: parent.height/25
+                font.pixelSize: parent.height/15
                 color: "black"
                 anchors.top: rectBackground.top
                 anchors.left: rectBackground.left
                 leftPadding: 10
-                topPadding: 5
+                topPadding: 10
             }
 
             TextField{
@@ -82,7 +90,7 @@ Item {
                 id: passWordText
                 text: "PASSWORD"
                 font.family: "Times New Roman"
-                font.pixelSize: parent.height/25
+                font.pixelSize: parent.height/15
                 color: "black"
                 anchors.top: nameTextField.bottom
                 anchors.left: rectBackground.left
@@ -111,47 +119,13 @@ Item {
                 }
 
             }
-            Text{
-                id: passWordConfirmText
-                text: "CONFIRM PASSWORD"
-                font.family: "Times New Roman"
-                font.pixelSize: parent.height/25
-                color: "black"
-                anchors.top: passwordTextField.bottom
-                anchors.left: rectBackground.left
-                leftPadding: 10
-                topPadding: 5
-
-            }
-
-            TextField{
-                id: passwordConfirmTextField
-                font.family: "Times New Roman"
-                font.pixelSize: nameText.font.pixelSize
-                width: rectBackground.width - 15
-                height: nameText.height + 20
-                color: "#ff0000"
-                anchors.top: passWordConfirmText.bottom
-                echoMode: TextField.Password
-                anchors.horizontalCenter: rectBackground.horizontalCenter
-                background: Rectangle{
-                    color: "white"
-                }
-                Rectangle{
-                    color: "#ff0000"
-                    anchors.bottom: parent.bottom
-                    height: 3
-                    width: parent.width
-                }
-            }
-
             Text {
                 id: passwordDontMatch
                 text: "PASSWORDS DON'T MATCH!"
                 font.family: "Times New Roman"
                 color: "red"
                 font.pixelSize: parent.height/25
-                anchors.top: passwordConfirmTextField.bottom
+                anchors.top: passwordTextField.bottom
                 visible: false
                 anchors.horizontalCenter: rectBackground.horizontalCenter
                 topPadding: 5
@@ -163,15 +137,19 @@ Item {
                 spoonTextSize: 20
                 spoonRightPadding: 10
                 onClicked: {
-
-                    if(passwordConfirmTextField.text == passwordTextField.text){
-                        jamRect.state = "Login"
-                    }
-                    else{
-                        passwordDontMatch.visible = true
-                    }
+                    shrinkRect.start()
+                    shrinkTimer.start()
                 }
             }
+        }
+    }
+
+    Timer{
+        id: shrinkTimer
+        interval: 400
+        repeat: false
+        onTriggered: {
+            jamRect.state = "Profile"
         }
     }
 
